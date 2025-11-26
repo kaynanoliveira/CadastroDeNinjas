@@ -1,13 +1,19 @@
 package com.kaynan.CadastroDeNinjas.Missoes.model;
 
-import com.kaynan.CadastroDeNinjas.Ninjas.model.NinjaModel;
+import com.kaynan.CadastroDeNinjas.Ninjas.model.Ninja;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tb_missoes")
-public class MissoesModel {
+public class Missoes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,5 +24,5 @@ public class MissoesModel {
 
     // @OneToMany - Uma missao pode ter vários ninjas
     @OneToMany(mappedBy = "missoes")
-    private List<NinjaModel> ninjas;
+    private List<Ninja> ninjas;
 }

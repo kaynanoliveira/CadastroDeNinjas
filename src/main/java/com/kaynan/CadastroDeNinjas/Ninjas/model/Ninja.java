@@ -1,6 +1,6 @@
 package com.kaynan.CadastroDeNinjas.Ninjas.model;
 
-import com.kaynan.CadastroDeNinjas.Missoes.model.MissoesModel;
+import com.kaynan.CadastroDeNinjas.Missoes.model.Missoes;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_cadastros")
-public class NinjaModel {
+public class Ninja {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +23,5 @@ public class NinjaModel {
     // @ManyToOne - Muitos ninjas para uma unica missao
     @ManyToOne
     @JoinColumn(name = "missoes_id")  // Foreing Key ou Chave estrangeira
-    private MissoesModel missoes;
+    private Missoes missoes;
 }

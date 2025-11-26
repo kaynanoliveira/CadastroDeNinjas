@@ -1,16 +1,27 @@
 package com.kaynan.CadastroDeNinjas.Ninjas.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.kaynan.CadastroDeNinjas.Ninjas.model.Ninja;
+import com.kaynan.CadastroDeNinjas.Ninjas.service.NinjaService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/ninjas")
 public class NinjaController {
+    public final NinjaService ninjaService;
 
-    @GetMapping("/boasvindas")
-    public String boasVindas(){
-        return "bem vindo";
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
     }
 
+    @GetMapping
+    public List<Ninja> getNinja(){
+        return ninjaService.getAll();
+    }
+
+    @PostMapping
+    public Ninja createNinja(@RequestBody Ninja ninja){
+        return ninjaService.create(ninja);
+    }
 }
